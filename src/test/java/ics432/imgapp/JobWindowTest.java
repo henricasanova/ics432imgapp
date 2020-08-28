@@ -204,11 +204,11 @@ class JobWindowTest {
 
         // Test coverage
         {
-            Image bogus = Util.loadImageFromDir("/", "tmp");
+            Image bogus = Util.loadImageFromDir("whatever", "bogus");
             assert(bogus == null);
         }
 
-        Image displayedImage = Util.loadImageFromDir("/tmp", "Invert_" + inputFileName);
+        Image displayedImage = Util.loadImageFromDir(System.getProperty("user.dir"), "Invert_" + inputFileName);
         Image expectedImage = Util.loadImageFromResourceFile("test", "correct_invert_" + inputFileName);
 
 

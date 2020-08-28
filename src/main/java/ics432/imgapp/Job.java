@@ -106,7 +106,7 @@ class Job {
         BufferedImage img = imgTransform.getBufferedImageOp().filter(SwingFXUtils.fromFXImage(image, null), null);
 
         // Write the image back to a file
-        String outputPath = this.targetDir + "/" + this.imgTransform.getName() + "_" + inputFile.getFileName();
+        String outputPath = this.targetDir + System.getProperty("file.separator") + this.imgTransform.getName() + "_" + inputFile.getFileName();
         try {
             OutputStream os = new FileOutputStream(new File(outputPath));
             ImageOutputStream outputStream = createImageOutputStream(os);

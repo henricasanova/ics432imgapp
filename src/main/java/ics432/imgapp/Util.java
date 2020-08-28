@@ -27,7 +27,7 @@ class Util {
     }
 
     /**
-     * Helper method to load an image from a /tmp/*.jpg file
+     * Helper method to load an image from a jpg file
      *
      * @param dirPath  the directory absolute path
      * @param filename The resource file name

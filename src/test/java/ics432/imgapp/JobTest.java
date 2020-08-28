@@ -3,8 +3,10 @@ package ics432.imgapp;
 import com.jhlabs.image.InvertFilter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.testfx.assertions.api.Assertions;
 import org.testfx.framework.junit5.ApplicationExtension;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,7 +33,16 @@ class JobTest {
         }
 
         // Create a job
-        String targetDirPath = "/tmp/";
+        //        String targetDirPath = "/tmp/";
+        Path tmpPath = null;
+        try {
+            tmpPath = Files.createTempDirectory("ics432_img_test");
+        } catch (IOException e) {
+            System.err.println("Cannot create tmp directory. aborting");
+            Assertions.fail(e.toString());
+        }
+        String targetDirPath = tmpPath.toAbsolutePath().toString();
+
         ImgTransform imgTransform = new ImgTransform("Invert", new InvertFilter());
         Job job = new Job(imgTransform, Paths.get(targetDirPath), fileList);
 
@@ -43,7 +54,7 @@ class JobTest {
             assert(outcome.success);
             assert(outcome.error == null);
             assert(outcome.inputFile == fileList.get(count));
-            assert(outcome.outputFile.toAbsolutePath().toString().equals(targetDirPath + imgTransform.getName() + "_" + filenames[count]));
+            assert(outcome.outputFile.toAbsolutePath().toString().equals(targetDirPath + System.getProperty("file.separator") + imgTransform.getName() + "_" + filenames[count]));
             assert(Files.exists(Paths.get(outcome.outputFile.toAbsolutePath().toString())));
             assert(TestUtil.checkPixels(outcome.outputFile,
                     Paths.get("src", "test", "resources", "correct_invert_" + filenames[count])));
@@ -60,7 +71,16 @@ class JobTest {
         fileList.add(Paths.get("/invalid/bogus/weird/none.jpg"));
 
         // Create a job
-        String targetDirPath = "/tmp/";
+//        String targetDirPath = "/tmp/";
+        Path tmpPath = null;
+        try {
+            tmpPath = Files.createTempDirectory("ics432_img_test");
+        } catch (IOException e) {
+            System.err.println("Cannot create tmp directory. aborting");
+            Assertions.fail(e.toString());
+        }
+        String targetDirPath = tmpPath.toAbsolutePath().toString();
+
         ImgTransform imgTransform = new ImgTransform("Invert", new InvertFilter());
         Job job = new Job(imgTransform, Paths.get(targetDirPath), fileList);
 

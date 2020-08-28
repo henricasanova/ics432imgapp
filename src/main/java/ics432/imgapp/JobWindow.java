@@ -55,7 +55,7 @@ class JobWindow extends Stage {
         double buttonPreferredHeight = 27.0;
 
         // Set up instance variables
-        targetDir = Paths.get("/tmp/");
+        targetDir = Paths.get(System.getProperty("user.dir"));
         this.inputFiles = inputFiles;
 
         // Set up the window
