@@ -33,12 +33,10 @@ class JobTest {
         }
 
         // Create a job
-        //        String targetDirPath = "/tmp/";
         Path tmpPath = null;
         try {
             tmpPath = Files.createTempDirectory("ics432_img_test");
         } catch (IOException e) {
-            System.err.println("Cannot create tmp directory. aborting");
             Assertions.fail(e.toString());
         }
         String targetDirPath = tmpPath.toAbsolutePath().toString();
@@ -58,8 +56,15 @@ class JobTest {
             assert(Files.exists(Paths.get(outcome.outputFile.toAbsolutePath().toString())));
             assert(TestUtil.checkPixels(outcome.outputFile,
                     Paths.get("src", "test", "resources", "correct_invert_" + filenames[count])));
+            // Clean up
+            outcome.outputFile.toFile().delete();
             count++;
         }
+
+        // Clean up
+        tmpPath.toFile().delete();
+
+
     }
 
     @Test
@@ -71,12 +76,10 @@ class JobTest {
         fileList.add(Paths.get("/invalid/bogus/weird/none.jpg"));
 
         // Create a job
-//        String targetDirPath = "/tmp/";
         Path tmpPath = null;
         try {
             tmpPath = Files.createTempDirectory("ics432_img_test");
         } catch (IOException e) {
-            System.err.println("Cannot create tmp directory. aborting");
             Assertions.fail(e.toString());
         }
         String targetDirPath = tmpPath.toAbsolutePath().toString();
@@ -85,7 +88,7 @@ class JobTest {
         Job job = new Job(imgTransform, Paths.get(targetDirPath), fileList);
 
         // Execute it
-       job.execute();
+        job.execute();
 
         assert(job.getOutcome().size() == 1);
 
@@ -95,6 +98,8 @@ class JobTest {
         assert(outcome.outputFile == null);
         assert(outcome.error != null);
         assert(outcome.error.getClass() == IOException.class);
+
+        tmpPath.toFile().delete();
     }
 
     @Test
