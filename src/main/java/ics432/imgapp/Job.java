@@ -124,7 +124,7 @@ class Job {
     /**
      * A helper nested class to define a imgTransform' outcome for a given input file and ImgTransform
      */
-    class ImgTransformOutcome {
+    static class ImgTransformOutcome {
 
         // Whether the image transform is successful or not
         final boolean success;

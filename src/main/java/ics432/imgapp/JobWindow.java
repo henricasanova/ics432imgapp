@@ -230,6 +230,5 @@ class JobWindow extends Stage {
 
         // Update the viewport
         this.flwvp.addFiles(toAddToDisplay);
-
     }
 }

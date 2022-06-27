@@ -17,7 +17,7 @@ import java.awt.*;
 public class ICS432ImgApp extends Application {
 
     /**
-     * start() Javafx Method to start the application
+     * start() JavaFx Method to start the application
      *
      * @param primaryStage  The primary stage, off which hang all windows.
      */
