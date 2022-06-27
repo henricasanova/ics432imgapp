@@ -1,7 +1,5 @@
 package ics432.imgapp;
 
-import javafx.application.Application;
-
 import javafx.scene.image.Image;
 import javafx.embed.swing.SwingFXUtils;
 

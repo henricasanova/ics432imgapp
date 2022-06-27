@@ -1,7 +1,5 @@
 package ics432.imgapp;
 
-import javafx.scene.Scene;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
