@@ -29,6 +29,11 @@
             <artifactId>javafx-swing</artifactId>
             <version>13.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.jhlabs</groupId>
+            <artifactId>filters</artifactId>
+            <version>2.0.235-1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -51,7 +56,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>ics432.imgapp.ics432imgapp/ics432.imgapp.ics432imgapp.HelloApplication
+                            <mainClass>ics432.imgapp.ics432imgapp/ICS432ImgApp
                             </mainClass>
                         </configuration>
                     </execution>
