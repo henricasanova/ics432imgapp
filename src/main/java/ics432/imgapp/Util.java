@@ -2,6 +2,7 @@ package ics432.imgapp;
 
 import javafx.scene.image.Image;
 
+import java.awt.*;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;

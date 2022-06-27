@@ -1,7 +1,9 @@
 package ics432.imgapp;
 
-import javafx.embed.swing.SwingFXUtils;
+import javafx.application.Application;
+
 import javafx.scene.image.Image;
+import javafx.embed.swing.SwingFXUtils;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
@@ -69,7 +71,9 @@ class Job {
                 // Generate a "failure" outcome
                 this.outcome.add(new ImgTransformOutcome(false, inputFile, null, e));
             }
+
         }
+
     }
 
     /**
