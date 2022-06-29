@@ -148,9 +148,7 @@ class FileListWithViewPort extends HBox {
         // Pass to the SimpleBooleanProperty a (more fancy)
         // listener that calls the (less fancy) user-provided listener
         this.nothingIsSelected.addListener((observable, oldValue, newValue) ->
-        {
-            listener.accept(newValue);
-        });
+                listener.accept(newValue));
     }
 
     /**

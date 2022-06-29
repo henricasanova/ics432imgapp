@@ -58,7 +58,7 @@ class Job {
         // Go through each input file and process it
         for (Path inputFile : inputFiles) {
 
-            System.err.println("Applying " + this.imgTransform.getName() + " to " + inputFile.toAbsolutePath().toString() + " ...");
+            System.err.println("Applying " + this.imgTransform.getName() + " to " + inputFile.toAbsolutePath() + " ...");
 
             Path outputFile;
             try {
@@ -97,11 +97,11 @@ class Job {
         try {
             image = new Image(inputFile.toUri().toURL().toString());
             if (image.isError()) {
-                throw new IOException("Error while reading from " + inputFile.toAbsolutePath().toString() +
+                throw new IOException("Error while reading from " + inputFile.toAbsolutePath() +
                         " (" + image.getException().toString() + ")");
             }
         } catch (IOException e) {
-            throw new IOException("Error while reading from " + inputFile.toAbsolutePath().toString());
+            throw new IOException("Error while reading from " + inputFile.toAbsolutePath());
         }
 
         // Process the image
@@ -110,7 +110,7 @@ class Job {
         // Write the image back to a file
         String outputPath = this.targetDir + System.getProperty("file.separator") + this.imgTransform.getName() + "_" + inputFile.getFileName();
         try {
-            OutputStream os = new FileOutputStream(new File(outputPath));
+            OutputStream os = new FileOutputStream(outputPath);
             ImageOutputStream outputStream = createImageOutputStream(os);
             ImageIO.write(img, "jpg", outputStream);
         } catch (IOException | NullPointerException e) {

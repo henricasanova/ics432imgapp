@@ -215,7 +215,7 @@ class JobWindow extends Stage {
             if (o.success) {
                 toAddToDisplay.add(o.outputFile);
             } else {
-                errorMessage.append(o.inputFile.toAbsolutePath().toString()).append(": ").append(o.error.getMessage()).append("\n");
+                errorMessage.append(o.inputFile.toAbsolutePath()).append(": ").append(o.error.getMessage()).append("\n");
             }
         }
 
