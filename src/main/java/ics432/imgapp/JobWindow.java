@@ -1,8 +1,5 @@
 package ics432.imgapp;
 
-import com.jhlabs.image.InvertFilter;
-import com.jhlabs.image.OilFilter;
-import com.jhlabs.image.SolarizeFilter;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.geometry.Pos;
@@ -93,9 +90,6 @@ class JobWindow extends Stage {
         //  Create the pulldown list of image transforms
         this.imgTransformList = new ComboBox<>();
         this.imgTransformList.setId("imgTransformList");  // For TestFX
-        OilFilter oil4Filter = new OilFilter();
-        oil4Filter.setRange(4);
-
         this.imgTransformList.setItems(FXCollections.observableArrayList(
                 "Invert",
                 "Solarize",

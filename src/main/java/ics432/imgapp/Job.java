@@ -3,7 +3,6 @@ package ics432.imgapp;
 import com.jhlabs.image.InvertFilter;
 import com.jhlabs.image.OilFilter;
 import com.jhlabs.image.SolarizeFilter;
-import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
 import javafx.embed.swing.SwingFXUtils;
 
@@ -11,7 +10,6 @@ import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -112,7 +110,6 @@ class Job {
         // Create the filter
         BufferedImageOp filter = createFilter(filterName);
 
-
         // Process the image
         BufferedImage img = filter.filter(SwingFXUtils.fromFXImage(image, null), null);
 
@@ -130,6 +127,11 @@ class Job {
         return Paths.get(outputPath);
     }
 
+    /**
+     * A helper method to create a Filter object
+     *
+     * @param filterName the filter's name
+     */
     private BufferedImageOp createFilter(String filterName) {
         switch (filterName) {
             case "Invert":
