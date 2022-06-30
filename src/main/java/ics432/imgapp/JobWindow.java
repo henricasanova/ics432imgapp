@@ -37,7 +37,7 @@ class JobWindow extends Stage {
     private final TextField targetDirTextField;
     private final Button runButton;
     private final Button closeButton;
-    private final ComboBox<ImgTransform> imgTransformList;
+    private final ComboBox<String> imgTransformList;
 
     /**
      * Constructor
@@ -97,9 +97,9 @@ class JobWindow extends Stage {
         oil4Filter.setRange(4);
 
         this.imgTransformList.setItems(FXCollections.observableArrayList(
-                new ImgTransform("Invert", new InvertFilter()),
-                new ImgTransform("Solarize", new SolarizeFilter()),
-                new ImgTransform("Oil4", oil4Filter)
+                "Invert",
+                "Solarize",
+                "Oil4"
         ));
 
         this.imgTransformList.getSelectionModel().selectFirst();  //Chooses first imgTransform as default
@@ -194,15 +194,15 @@ class JobWindow extends Stage {
     /**
      * A method to execute the job
      *
-     * @param imgTransform The imgTransform to apply to input images
+     * @param filterName The name of the filter to apply to input images
      */
-    private void executeJob(ImgTransform imgTransform) {
+    private void executeJob(String filterName) {
 
         // Clear the display
         this.flwvp.clear();
 
         // Create a job
-        Job job = new Job(imgTransform, this.targetDir, this.inputFiles);
+        Job job = new Job(filterName, this.targetDir, this.inputFiles);
 
         // Execute it
         job.execute();

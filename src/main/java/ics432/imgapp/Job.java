@@ -1,11 +1,16 @@
 package ics432.imgapp;
 
+import com.jhlabs.image.InvertFilter;
+import com.jhlabs.image.OilFilter;
+import com.jhlabs.image.SolarizeFilter;
+import javafx.collections.FXCollections;
 import javafx.scene.image.Image;
 import javafx.embed.swing.SwingFXUtils;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,13 +24,13 @@ import static javax.imageio.ImageIO.createImageOutputStream;
 
 /**
  * A class that defines the "job" abstraction, that is, a  set of input image files
- * to which an ImgTransform must be applied, thus generating a set of output
+ * to which a filter must be applied, thus generating a set of output
  * image files. Each output file name is the input file name prepended with
  * the ImgTransform name and an underscore.
  */
 class Job {
 
-    private final ImgTransform imgTransform;
+    private final String filterName;
     private final Path targetDir;
     private final List<Path> inputFiles;
 
@@ -35,15 +40,15 @@ class Job {
     /**
      * Constructor
      *
-     * @param imgTransform The imgTransform to apply to input images
+     * @param filterName The imgTransform to apply to input images
      * @param targetDir  The target directory in which to generate output images
      * @param inputFiles The list of input file paths
      */
-    Job(ImgTransform imgTransform,
+    Job(String filterName,
         Path targetDir,
         List<Path> inputFiles) {
 
-        this.imgTransform = imgTransform;
+        this.filterName = filterName;
         this.targetDir = targetDir;
         this.inputFiles = inputFiles;
 
@@ -58,7 +63,7 @@ class Job {
         // Go through each input file and process it
         for (Path inputFile : inputFiles) {
 
-            System.err.println("Applying " + this.imgTransform.getName() + " to " + inputFile.toAbsolutePath() + " ...");
+            System.err.println("Applying " + this.filterName + " to " + inputFile.toAbsolutePath() + " ...");
 
             Path outputFile;
             try {
@@ -104,11 +109,15 @@ class Job {
             throw new IOException("Error while reading from " + inputFile.toAbsolutePath());
         }
 
+        // Create the filter
+        BufferedImageOp filter = createFilter(filterName);
+
+
         // Process the image
-        BufferedImage img = imgTransform.getBufferedImageOp().filter(SwingFXUtils.fromFXImage(image, null), null);
+        BufferedImage img = filter.filter(SwingFXUtils.fromFXImage(image, null), null);
 
         // Write the image back to a file
-        String outputPath = this.targetDir + System.getProperty("file.separator") + this.imgTransform.getName() + "_" + inputFile.getFileName();
+        String outputPath = this.targetDir + System.getProperty("file.separator") + this.filterName + "_" + inputFile.getFileName();
         try {
             OutputStream os = new FileOutputStream(outputPath);
             ImageOutputStream outputStream = createImageOutputStream(os);
@@ -119,6 +128,21 @@ class Job {
 
         // Success!
         return Paths.get(outputPath);
+    }
+
+    private BufferedImageOp createFilter(String filterName) {
+        switch (filterName) {
+            case "Invert":
+                return new InvertFilter();
+            case "Solarize":
+                return new SolarizeFilter();
+            case "Oil4":
+                OilFilter oil4Filter = new OilFilter();
+                oil4Filter.setRange(4);
+                return oil4Filter;
+            default:
+                throw new RuntimeException("Unknown filter " + filterName);
+        }
     }
 
     /**
@@ -149,5 +173,6 @@ class Job {
             this.outputFile = output_file;
             this.error = error;
         }
+
     }
 }
