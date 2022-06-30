@@ -244,7 +244,7 @@ class FileListWithViewPort extends HBox {
         } else {
             img = emptyImage;
         }
-        // Display the image obtained from the file (or the empay
+        // Display the image obtained from the file
         displayInViewPort(img);
     }
 
