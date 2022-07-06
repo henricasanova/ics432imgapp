@@ -43,13 +43,13 @@ To make sure that the Docker image was built correctly:
   - Invoke the following command:
 
     ```
-    docker run -v input_image_path:/tmp/input -v output_image_path:/tmp/output ics432imgapp_c_filters jpegedge /tmp/input/<input_image.jpg> /tmp/output/output_image.jpg
+    docker run -v input_image_path:/tmp/input -v output_image_path:/tmp/output ics432imgapp_c_filters jpegedge /tmp/input/input_image.jpg /tmp/output/output_image.jpg
     ```
 
   - After this command returns, you should see the output image on your machine in file `output_image_path/output_image.jpg`!!
  
 
-If you're encountering difficulties, ask the instructor. The above demonstrates that we are able to run the image filter programs installed in the Docker container put passing them input files that are stored on your local machine and having them write output files on your local machine as well. In other words, although these programs run on Linux, they run on any OS as if installed on that OS. This one of the key goals of containers. 
+If you're encountering difficulties, ask the instructor. The above demonstrates that we are able to run the image filter programs installed in the Docker container put passing them input files that are stored on your local machine and having them write output files on your local machine as well. In other words, although these programs run on Linux within the container, the container can run on any OS (that's what containers do).
 
 To invoke the external filters, the Java app will simply execute the above (long) `docker` command in an external process.
 
