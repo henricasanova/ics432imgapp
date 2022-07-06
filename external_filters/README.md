@@ -43,7 +43,7 @@ To make sure that the Docker image was built correctly:
   - Invoke the following command:
 
     ```
-    docker run -v input_image_path:/tmp/input -v output_image_path:/tmp/output ics432imgapp_c_filters jpegedge /tmp/input/input_image.jpg /tmp/output/output_image.jpg
+    docker run --rm -v input_image_path:/tmp/input -v output_image_path:/tmp/output ics432imgapp_c_filters jpegedge /tmp/input/input_image.jpg /tmp/output/output_image.jpg
     ```
 
   - After this command returns, you should see the output image on your machine in file `output_image_path/output_image.jpg`!!
