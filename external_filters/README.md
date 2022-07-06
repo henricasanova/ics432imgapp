@@ -31,7 +31,7 @@ After installing [Docker](https://docs.docker.com) on your machine, the Docker i
   - `cd external_filter`
   - `docker build --no-cache -t ics432imgapp_c_filters .`
 
-(don't forget the '.'). The above `docker` command will take a while, and create a Linux Docker image called `ics432imgapp_c_filters` in which the three image filter programs implemented in C are compiled and installed (`jpegedge`, `jpegfunk1`, `jpegfunk2`).
+(don't forget the `.`). The above `docker` command will take a while, and create a Linux Docker image called `ics432imgapp_c_filters` in which the three image filter programs implemented in C are compiled and installed (`jpegedge`, `jpegfunk1`, `jpegfunk2`).
 
 To make sure that the Docker image was built correctly:
   - Pick some jpeg image, say in file `input_image.jpg`, in some directory, say `input_image_path`, on your machine
