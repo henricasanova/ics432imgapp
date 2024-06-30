@@ -14,7 +14,6 @@ class Util {
     /**
      * Helper method to load an image from a resource file (with a URL)
      *
-     * @param srcSubDir The directory in the src directory
      * @param filename  The resource file name
      * @return an image
      */
