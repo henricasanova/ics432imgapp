@@ -1,10 +1,10 @@
 package ics432.imgapp;
 
+import javafx.stage.Screen;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 
-import java.awt.*;
 
 /**
  * Top-level class that merely defines the JavaFX start() method that pops up
@@ -24,10 +24,13 @@ public class ICS432ImgApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Determine screen dimensions
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        // Determine appropriate window dimensions
-        int width = (int)(0.8 * screenSize.getWidth());
-        int height = (int)(0.8 * screenSize.getHeight());
+        double screenWidth = Screen.getPrimary().getBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getBounds().getHeight();
+
+        // Compute appropriate window dimensions
+        int width = (int)(0.8 * screenWidth);
+        int height = (int)(0.8 * screenHeight);
+
         // Pop up the main window
         new MainWindow(primaryStage, width, height);
     }

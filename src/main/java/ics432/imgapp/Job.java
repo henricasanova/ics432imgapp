@@ -6,10 +6,10 @@ import com.jhlabs.image.SolarizeFilter;
 import javafx.scene.image.Image;
 import javafx.embed.swing.SwingFXUtils;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
 import java.awt.image.BufferedImage;
 import java.awt.image.BufferedImageOp;
+import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;

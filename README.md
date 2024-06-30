@@ -7,5 +7,6 @@ all ICS432 programming assignments.
 The application is structured as a Maven project, with all source code in the 
 `src/` directory and the Maven configuration in the `pom.xml` file.
 
-The `external_filters` directory contains additional image filters implemented in C, which will be relevant for the last programming assignment. See `README` file within.
+The `external_filters` directory contains additional image filters, not necessarily implemented in Java, 
+which will be relevant for later programming assignment. See `README` file within for details.
 
