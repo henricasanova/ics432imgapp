@@ -3,16 +3,17 @@ package ics432.imgapp;
 import com.jhlabs.image.InvertFilter;
 import com.jhlabs.image.OilFilter;
 import com.jhlabs.image.SolarizeFilter;
-import javafx.scene.image.Image;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -114,7 +115,7 @@ class Job {
         BufferedImage img = filter.filter(SwingFXUtils.fromFXImage(image, null), null);
 
         // Write the image back to a file
-        String outputPath = this.targetDir + System.getProperty("file.separator") + this.filterName + "_" + inputFile.getFileName();
+        String outputPath = this.targetDir + FileSystems.getDefault().getSeparator() + this.filterName + "_" + inputFile.getFileName();
         try {
             OutputStream os = new FileOutputStream(outputPath);
             ImageOutputStream outputStream = createImageOutputStream(os);

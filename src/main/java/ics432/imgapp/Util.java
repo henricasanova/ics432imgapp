@@ -15,8 +15,7 @@ class Util {
      * Helper method to load an image from a resource file (with a URL)
      *
      * @param srcSubDir The directory in the src directory
-     * @param filename The resource file name
-     *
+     * @param filename  The resource file name
      * @return an image
      */
     static Image loadImageFromResourceFile(String srcSubDir, String filename) {
@@ -31,7 +30,6 @@ class Util {
      *
      * @param dirPath  the directory absolute path
      * @param filename The resource file name
-     *
      * @return an image
      */
     static Image loadImageFromDir(String dirPath, String filename) {
@@ -43,7 +41,6 @@ class Util {
      * Helper method to load an image from an absolute path
      *
      * @param path The path
-     *
      * @return an image or null if there was an error
      */
     private static Image loadImageFromPath(Path path) {

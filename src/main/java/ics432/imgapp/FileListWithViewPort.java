@@ -67,8 +67,8 @@ class FileListWithViewPort extends HBox {
         this.nothingIsSelected = new SimpleBooleanProperty(true);
 
         // Get references to the empty and broken images (in the resources directory)
-        this.emptyImage = Util.loadImageFromResourceFile("main","empty-image.png");
-        this.brokenImage = Util.loadImageFromResourceFile("main","broken-image.png");
+        this.emptyImage = Util.loadImageFromResourceFile("main", "empty-image.png");
+        this.brokenImage = Util.loadImageFromResourceFile("main", "broken-image.png");
 
         // Create the left-hand side file list (a ListView of an observable list of Path objects)
         this.availableFiles = FXCollections.observableArrayList();
@@ -117,7 +117,7 @@ class FileListWithViewPort extends HBox {
             // If the key pressed was BACK_SPACE and the list is editable, remove items
             if (this.isEditable && (e.getCode() == KeyCode.BACK_SPACE)) {
 
-                int to_select_after = Math.max(0, this.availableFilesView.getSelectionModel().getSelectedIndices().get(0) - 1);
+                int to_select_after = Math.max(0, this.availableFilesView.getSelectionModel().getSelectedIndices().getFirst() - 1);
                 this.availableFiles.removeAll(this.availableFilesView.getSelectionModel().getSelectedItems());
                 if (this.availableFiles.size() > 0) {
                     this.availableFilesView.getSelectionModel().select(to_select_after);
@@ -158,10 +158,10 @@ class FileListWithViewPort extends HBox {
         // Must be done in the JavaFX application thread, and this method
         // may be called from any thread, so let's handle two cases (we don't
         // want the JavaFX Application thread to call runLater)
-        if (! Platform.isFxApplicationThread()) {
+        if (!Platform.isFxApplicationThread()) {
             Platform.runLater(this::clearFileList);
         } else {
-           this.clearFileList();
+            this.clearFileList();
         }
     }
 
@@ -209,7 +209,7 @@ class FileListWithViewPort extends HBox {
             }
         }
 
-        Platform.runLater(()-> this.nothingIsSelected.setValue(this.availableFilesView.getSelectionModel().getSelectedItems().isEmpty()));
+        Platform.runLater(() -> this.nothingIsSelected.setValue(this.availableFilesView.getSelectionModel().getSelectedItems().isEmpty()));
     }
 
     /**
@@ -260,7 +260,7 @@ class FileListWithViewPort extends HBox {
 
         // Max out the width
         double image_ratio = img.getHeight() / img.getWidth();
-        double target_width = 2  * this.width / 3;
+        double target_width = 2 * this.width / 3;
 
         // Reduce it if necessary for height
         if (target_width * image_ratio > this.height) {

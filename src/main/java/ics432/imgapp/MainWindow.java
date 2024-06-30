@@ -59,7 +59,7 @@ class MainWindow {
         quitButton.setPrefHeight(buttonPreferredHeight);
 
         this.fileListWithViewPort = new FileListWithViewPort(
-                windowWidth  * 0.98,
+                windowWidth * 0.98,
                 windowHeight - 3 * buttonPreferredHeight - 3 * 5,
                 true);
 
@@ -84,7 +84,7 @@ class MainWindow {
                     (int) (windowWidth * 0.8), (int) (windowHeight * 0.8),
                     this.primaryStage.getX() + 100 + this.pendingJobCount * 10,
                     this.primaryStage.getY() + 50 + this.pendingJobCount * 10,
-                    this.jobID, new  ArrayList<>(this.fileListWithViewPort.getSelection()));
+                    this.jobID, new ArrayList<>(this.fileListWithViewPort.getSelection()));
 
             jw.addCloseListener(() -> {
                 this.pendingJobCount -= 1;
@@ -128,7 +128,7 @@ class MainWindow {
         fileChooser.setTitle("Choose Image Files");
         fileChooser.getExtensionFilters().addAll(
                 new ExtensionFilter("Jpeg Image Files", "*.jpg", "*.jpeg", "*.JPG", "*.JPEG"));
-        List<File>  selectedFiles = fileChooser.showOpenMultipleDialog(this.primaryStage);
+        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(this.primaryStage);
 
         if (selectedFiles == null) {
             return new ArrayList<>();

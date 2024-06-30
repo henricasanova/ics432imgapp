@@ -39,12 +39,12 @@ class JobWindow extends Stage {
     /**
      * Constructor
      *
-     * @param windowWidth      The window's width
-     * @param windowHeight     The window's height
-     * @param X          The horizontal position of the job window
-     * @param Y          The vertical position of the job window
-     * @param id         The id of the job
-     * @param inputFiles The batch of input image files
+     * @param windowWidth  The window's width
+     * @param windowHeight The window's height
+     * @param X            The horizontal position of the job window
+     * @param Y            The vertical position of the job window
+     * @param id           The id of the job
+     * @param inputFiles   The batch of input image files
      */
     JobWindow(int windowWidth, int windowHeight, double X, double Y, int id, List<Path> inputFiles) {
 
@@ -52,7 +52,7 @@ class JobWindow extends Stage {
         double buttonPreferredHeight = 27.0;
 
         // Set up instance variables
-        targetDir = Paths.get(inputFiles.get(0).getParent().toString()); // Same dir as input images
+        targetDir = Paths.get(inputFiles.getFirst().getParent().toString()); // Same dir as input images
         this.inputFiles = inputFiles;
 
 
@@ -105,7 +105,7 @@ class JobWindow extends Stage {
         this.runButton.setPrefHeight(buttonPreferredHeight);
 
         // Create the FileListWithViewPort display
-        this.flwvp = new FileListWithViewPort(windowWidth *  0.98, windowHeight - 4 * buttonPreferredHeight - 3 *  5, false);
+        this.flwvp = new FileListWithViewPort(windowWidth * 0.98, windowHeight - 4 * buttonPreferredHeight - 3 * 5, false);
         this.flwvp.addFiles(inputFiles);
 
         // Create a "Close" button
@@ -215,7 +215,7 @@ class JobWindow extends Stage {
         }
 
         // Pop up error dialog if needed
-        if (!errorMessage.toString().equals("")) {
+        if (!errorMessage.toString().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ImgTransform Job Error");
             alert.setHeaderText(null);
