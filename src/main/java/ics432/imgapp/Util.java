@@ -18,23 +18,11 @@ class Util {
      * @param filename  The resource file name
      * @return an image
      */
-    static Image loadImageFromResourceFile(String srcSubDir, String filename) {
+    static Image loadImageFromResourceFile(String filename) {
 
-        Path path = Paths.get("src", srcSubDir, "resources", filename).toAbsolutePath();
+        Path path = Paths.get("src", "main", "resources", filename).toAbsolutePath();
         return loadImageFromPath(path);
 
-    }
-
-    /**
-     * Helper method to load an image from a jpg file
-     *
-     * @param dirPath  the directory absolute path
-     * @param filename The resource file name
-     * @return an image
-     */
-    static Image loadImageFromDir(String dirPath, String filename) {
-        Path path = Paths.get(dirPath, filename).toAbsolutePath();
-        return loadImageFromPath(path);
     }
 
     /**

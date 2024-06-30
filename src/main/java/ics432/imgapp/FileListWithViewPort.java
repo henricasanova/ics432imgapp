@@ -67,8 +67,8 @@ class FileListWithViewPort extends HBox {
         this.nothingIsSelected = new SimpleBooleanProperty(true);
 
         // Get references to the empty and broken images (in the resources directory)
-        this.emptyImage = Util.loadImageFromResourceFile("main", "empty-image.png");
-        this.brokenImage = Util.loadImageFromResourceFile("main", "broken-image.png");
+        this.emptyImage = Util.loadImageFromResourceFile("empty-image.png");
+        this.brokenImage = Util.loadImageFromResourceFile("broken-image.png");
 
         // Create the left-hand side file list (a ListView of an observable list of Path objects)
         this.availableFiles = FXCollections.observableArrayList();
@@ -119,7 +119,7 @@ class FileListWithViewPort extends HBox {
 
                 int to_select_after = Math.max(0, this.availableFilesView.getSelectionModel().getSelectedIndices().getFirst() - 1);
                 this.availableFiles.removeAll(this.availableFilesView.getSelectionModel().getSelectedItems());
-                if (this.availableFiles.size() > 0) {
+                if (!this.availableFiles.isEmpty()) {
                     this.availableFilesView.getSelectionModel().select(to_select_after);
                 }
             }

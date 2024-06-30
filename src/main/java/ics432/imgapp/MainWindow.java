@@ -41,7 +41,7 @@ class MainWindow {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("ICS 432 Image Editing App");
 
-        // Make this primaryStage non closable
+        // Make this primaryStage non-closable
         this.primaryStage.setOnCloseRequest(Event::consume);
 
         // Create all widgets
@@ -109,7 +109,7 @@ class MainWindow {
         this.primaryStage.setScene(scene);
         this.primaryStage.setResizable(false);
 
-        // Make this primaryStage non closable
+        // Make this primaryStage non-closable
         this.primaryStage.setOnCloseRequest(Event::consume);
 
         //  Show it on  screen.

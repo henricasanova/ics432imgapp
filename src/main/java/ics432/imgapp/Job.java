@@ -149,7 +149,7 @@ class Job {
     }
 
     /**
-     * A helper nested class to define a imgTransform' outcome for a given input file and ImgTransform
+     * A helper nested class to define a imgTransform outcome for a given input file and ImgTransform
      */
     static class ImgTransformOutcome {
 

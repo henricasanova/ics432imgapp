@@ -62,7 +62,7 @@ class JobWindow extends Stage {
         this.setTitle("Image Transformation Job #" + id);
         this.setResizable(false);
 
-        // Make this window non closable
+        // Make this window non-closable
         this.setOnCloseRequest(Event::consume);
 
         // Create all sub-widgets in the window
@@ -73,13 +73,13 @@ class JobWindow extends Stage {
         this.changeDirButton = new Button("");
         this.changeDirButton.setId("changeDirButton");
         this.changeDirButton.setPrefHeight(buttonPreferredHeight);
-        Image image = Util.loadImageFromResourceFile("main", "folder-icon.png");
+        Image image = Util.loadImageFromResourceFile("folder-icon.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(10);
         imageView.setFitHeight(10);
         this.changeDirButton.setGraphic(imageView);
 
-        // Create a "target directory"  textfield
+        // Create a "target directory"  text field
         this.targetDirTextField = new TextField(this.targetDir.toString());
         this.targetDirTextField.setDisable(true);
         HBox.setHgrow(targetDirTextField, Priority.ALWAYS);
@@ -88,7 +88,7 @@ class JobWindow extends Stage {
         Label transformLabel = new Label("Transformation: ");
         transformLabel.setPrefWidth(115);
 
-        //  Create the pulldown list of image transforms
+        //  Create the pull-down list of image transforms
         this.imgTransformList = new ComboBox<>();
         this.imgTransformList.setId("imgTransformList");  // For TestFX
         this.imgTransformList.setItems(FXCollections.observableArrayList(
