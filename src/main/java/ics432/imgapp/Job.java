@@ -34,7 +34,7 @@ class Job {
     private final List<Path> inputFiles;
 
     // The list of outcomes for each input file
-    private final List<ImgTransformOutcome> outcome;
+    private final List<ImgTransformOutcome> outcomes;
 
     /**
      * Constructor
@@ -51,7 +51,7 @@ class Job {
         this.targetDir = targetDir;
         this.inputFiles = inputFiles;
 
-        this.outcome = new ArrayList<>();
+        this.outcomes = new ArrayList<>();
     }
 
     /**
@@ -68,10 +68,10 @@ class Job {
             try {
                 outputFile = processInputFile(inputFile);
                 // Generate a "success" outcome
-                this.outcome.add(new ImgTransformOutcome(true, inputFile, outputFile, null));
+                this.outcomes.add(new ImgTransformOutcome(true, inputFile, outputFile, null));
             } catch (IOException e) {
                 // Generate a "failure" outcome
-                this.outcome.add(new ImgTransformOutcome(false, inputFile, null, e));
+                this.outcomes.add(new ImgTransformOutcome(false, inputFile, null, e));
             }
 
         }
@@ -84,8 +84,8 @@ class Job {
      * @return The job outcomes, i.e., a list of ImgTransformOutcome objects
      * (in flux if the job isn't done executing)
      */
-    List<ImgTransformOutcome> getOutcome() {
-        return this.outcome;
+    List<ImgTransformOutcome> getOutcomes() {
+        return this.outcomes;
     }
 
     /**

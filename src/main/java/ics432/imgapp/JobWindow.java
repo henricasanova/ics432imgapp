@@ -206,7 +206,7 @@ class JobWindow extends Stage {
         List<Path> toAddToDisplay = new ArrayList<>();
 
         StringBuilder errorMessage = new StringBuilder();
-        for (Job.ImgTransformOutcome o : job.getOutcome()) {
+        for (Job.ImgTransformOutcome o : job.getOutcomes()) {
             if (o.success) {
                 toAddToDisplay.add(o.outputFile);
             } else {
