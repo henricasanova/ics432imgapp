@@ -14,7 +14,7 @@ class Util {
     /**
      * Helper method to load an image from a resource file (with a URL)
      *
-     * @param filename  The resource file name
+     * @param filename The resource file name
      * @return an image
      */
     static Image loadImageFromResourceFile(String filename) {
