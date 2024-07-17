@@ -47,15 +47,12 @@ class MainWindow {
         // Create all widgets
         Button addFilesButton = new Button("Add Image Files");
         addFilesButton.setPrefHeight(buttonPreferredHeight);
-        addFilesButton.setId("addFilesButton"); // for TestFX
 
         Button createJobButton = new Button("Create Job");
         createJobButton.setPrefHeight(buttonPreferredHeight);
         createJobButton.setDisable(true);
-        createJobButton.setId("createJobButton"); // for TestFX
 
         quitButton = new Button("Quit");
-        quitButton.setId("quitButton"); // for TestFX
         quitButton.setPrefHeight(buttonPreferredHeight);
 
         this.fileListWithViewPort = new FileListWithViewPort(

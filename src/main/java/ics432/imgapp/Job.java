@@ -39,7 +39,7 @@ class Job {
     /**
      * Constructor
      *
-     * @param filterName The imgTransform to apply to input images
+     * @param filterName The name of the filter to apply to input images
      * @param targetDir  The target directory in which to generate output images
      * @param inputFiles The list of input file paths
      */
