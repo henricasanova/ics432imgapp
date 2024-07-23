@@ -1,15 +1,4 @@
-FROM ubuntu:focal
-
-LABEL org.opencontainers.image.authors="henric@hawaii.edu"
-
-# compiler, etc.
-RUN apt-get update
-RUN apt-get -y install gcc 
-RUN apt-get -y install cmake
-RUN apt-get -y install sudo
-
-# install libjpeg for modern c++
-RUN apt-get -y install libjpeg-dev
+FROM henricasanova/ics432_on_linux
 
 # ics432 user
 RUN useradd -ms /bin/bash ics432
