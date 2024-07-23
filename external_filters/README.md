@@ -6,7 +6,7 @@ programs that can be invoked on the command-line, or by the Java code.
 
 ### Building filters on Linux 
 
-In a Linux machine, the external filters can be built/installed as follows:
+On a Linux machine, the external filters can be built/installed as follows:
 
   - `sudo apt update`
   - `sudo apt install gcc cmake libjpeg-dev
@@ -17,14 +17,13 @@ In a Linux machine, the external filters can be built/installed as follows:
   - `make`
   - `sudo make install`
 
-This above sequence of commands will result in three executables (`jpegedge`, `jpegfunk1`, and `jpegfunk2`) installed in `/bin` so that they can just be invoked
-from the command-line.
+This above sequence of commands will result in three executables (`jpegedge`, `jpegfunk1`, and `jpegfunk2`) installed in `/bin` so that they can just be invoked from the command-line.
 
 Programming assignments will ask you to modify the code of these filters (in `external_filters/c_filters/src/`). 
 
 ### Building a Docker image with the filters
 
-Because not everybody is on a Linux system, we will create a Docker image with the filters installed in it, and the Java code will invoke the filter programs via Docker!  
+Because not everybody is on a Linux system, we will create a Docker image with the filters installed in it, and the Java code will invoke the filter programs via Docker!
 
 After installing [Docker](https://docs.docker.com) on your machine, the Docker image can be built easily from the Dockerfile provided for you in `external_filters/Dockerfile`. Specifically:
   
@@ -40,7 +39,7 @@ To make sure that the Docker image was built correctly:
 
   - Pick some name for the output image file, say `output_image.jpg`
 
-  - Invoke the following command:
+  - Invoke the following command (in the examples below we assume a Linux-like file-system with forward slashes, you have to change that if you're on Windows):
 
     ```
     docker run --rm -v input_image_path:/tmp/input -v output_image_path:/tmp/output ics432imgapp_c_filters jpegedge /tmp/input/input_image.jpg /tmp/output/output_image.jpg
